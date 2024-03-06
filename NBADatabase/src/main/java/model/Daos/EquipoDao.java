@@ -1,6 +1,5 @@
 package model.Daos;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import model.Entities.Equipo;
 
