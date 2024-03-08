@@ -6,7 +6,7 @@ import model.Daos.JugadorDao;
 import model.Classes.*;
 import model.Entities.Equipo;
 import model.Entities.Jugador;
-import model.JugadorDto;
+import model.Dtos.JugadorDto;
 
 public class JugadoresController {
 
@@ -35,6 +35,7 @@ public class JugadoresController {
         Draft draft = jugador.getDraft();
 
 
+
         JugadorDto jugadorDto = new JugadorDto(
                 jugador.getNombre()+" "+jugador.getApellido(),
                 equipo.getNombreCompleto(),
@@ -43,6 +44,8 @@ public class JugadoresController {
                 jugador.getPeso(),
                 String.valueOf(jugador.getNumero()),
                 draft.getAnoDraft(),
+                draft.getRonda(),
+                draft.getNumeroDraft(),
                 jugador.getPais()
         );
 

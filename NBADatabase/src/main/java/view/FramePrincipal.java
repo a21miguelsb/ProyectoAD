@@ -1,19 +1,19 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class FramePrincipal extends JFrame {
-    FormBusquedaJugador formBusquedaJugador;
+    PanelBotonesFunciones panelBotones;
     public FramePrincipal() {
-        setTitle("NBA Database");
-        formBusquedaJugador = new FormBusquedaJugador();
+        setTitle("NBA App");
+        panelBotones = new PanelBotonesFunciones();
 
 
-        add(formBusquedaJugador, BorderLayout.NORTH);
+        add(panelBotones);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 400);
+        setSize(500, 400);
+        setResizable(false);
         setVisible(true);
     }
 
