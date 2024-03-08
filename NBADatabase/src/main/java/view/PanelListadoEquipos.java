@@ -1,44 +1,60 @@
 package view;
 
+import controller.EquiposController;
+import model.Classes.ButtonEditor;
+import model.Classes.ButtonRenderer;
+import model.Classes.EquipoTableModel;
 import model.Entities.Equipo;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.List;
 
 public class PanelListadoEquipos extends JPanel {
 
     private JTable equipoTable;
     private DefaultTableModel tableModel;
+    private JButton botonInfoEquipo;
 
-    public PanelListadoEquipos(List<Equipo> equipos) {
+    public PanelListadoEquipos() {
+        EquiposController equiposController = new EquiposController();
+        setLayout(new BorderLayout());
+        botonInfoEquipo = new JButton("Más Info");
 
-        tableModel = new DefaultTableModel();
+        List<Equipo> equipos = equiposController.buscarEquipos();
+        tableModel = new EquipoTableModel(equipos);
         equipoTable = new JTable(tableModel);
 
         // Agregar las columnas al modelo
         tableModel.addColumn("Nombre Completo");
-        tableModel.addColumn("Abreviatura");
         tableModel.addColumn("Ciudad");
-        tableModel.addColumn("Conferencia");
-        tableModel.addColumn("División");
+        tableModel.addColumn("");
 
+        equipoTable.setDefaultRenderer(JButton.class,new ButtonRenderer());
+        equipoTable.setDefaultEditor(JButton.class, new ButtonEditor());
         // Crear un JScrollPane y agregar la tabla al JScrollPane
         JScrollPane scrollPane = new JScrollPane(equipoTable);
 
         tableModel.setRowCount(0);
-        add(scrollPane);
+
+
+        add(scrollPane, BorderLayout.CENTER);
 
         for (Equipo equipo : equipos) {
             Object[] rowData = {
                     equipo.getNombreCompleto(),
-                    equipo.getAbreviatura(),
                     equipo.getCiudad(),
-                    equipo.getConferencia(),
-                    equipo.getDivision(),
+
+
             };
             tableModel.addRow(rowData);
+
+
         }
+
+
+
         setVisible(true);
     }
 }

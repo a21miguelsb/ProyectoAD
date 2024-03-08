@@ -1,20 +1,22 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class FramePrincipal extends JFrame {
-    PanelBotonesFunciones panelBotones;
+    PanelTabbedPrincipal panelBotones;
     public FramePrincipal() {
         setTitle("NBA App");
-        panelBotones = new PanelBotonesFunciones();
+        panelBotones = new PanelTabbedPrincipal();
 
 
         add(panelBotones);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 400);
+        setPreferredSize(new Dimension(600, 400));
         setResizable(false);
         setVisible(true);
+        pack();
     }
 
 }

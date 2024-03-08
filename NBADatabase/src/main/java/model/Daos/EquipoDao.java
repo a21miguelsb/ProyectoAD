@@ -74,4 +74,11 @@ public class EquipoDao implements Dao<Equipo> {
         em.getTransaction().commit();
         return equipos;
     }
+
+    public Equipo getByName(String nombreEquipo) {
+        em.getTransaction().begin();
+        Equipo equipo = (Equipo) em.createQuery("SELECT e FROM Equipo e WHERE e.nombreCompleto = :nombreEquipo").setParameter("nombreEquipo", nombreEquipo).getSingleResult();
+        em.getTransaction().commit();
+        return equipo;
+    }
 }

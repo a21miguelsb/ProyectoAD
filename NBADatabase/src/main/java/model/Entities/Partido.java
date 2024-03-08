@@ -1,7 +1,6 @@
 package model.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -9,120 +8,121 @@ import java.time.LocalDate;
 @Entity
 public class Partido implements Serializable {
     @Id
-    private long id;
-    private LocalDate date;
-    private Equipo home_team;
-    private Equipo visitor_team;
-    private int home_team_score;
-    private int visitor_team_score;
-    private String status;
-    private String time;
-    private long season;
-    private String period;
-    private String postseason;
+    private long idPartido;
+    @ManyToOne
+    private Integer idEquipoLocal;
+    @ManyToOne
+    private Integer idEquipoVisitante;
 
-    public Partido() {
+    private int periodo;
+    private String postemporada;
+    private int puntosLocal;
+    private int puntosVisitante;
+    private int temporada;
+
+    private LocalDate fecha;
+    private String estado;
+    private String tiempo;
+
+    public Partido(Integer idEquipoLocal, Integer idEquipoVisitante, long idPartido, int periodo, String postemporada, int puntosLocal, int puntosVisitante, int temporada, LocalDate fecha, String estado, String tiempo) {
+        this.idEquipoLocal = idEquipoLocal;
+        this.idEquipoVisitante = idEquipoVisitante;
+        this.idPartido = idPartido;
+        this.periodo = periodo;
+        this.postemporada = postemporada;
+        this.puntosLocal = puntosLocal;
+        this.puntosVisitante = puntosVisitante;
+        this.temporada = temporada;
+        this.fecha = fecha;
+        this.estado = estado;
+        this.tiempo = tiempo;
     }
 
-    public Partido(long id, LocalDate date, Equipo home_team, Equipo visitor_team, int home_team_score, int visitor_team_score, String status, String time, long season, String period, String postseason) {
-        this.id = id;
-        this.date = date;
-        this.home_team = home_team;
-        this.visitor_team = visitor_team;
-        this.home_team_score = home_team_score;
-        this.visitor_team_score = visitor_team_score;
-        this.status = status;
-        this.time = time;
-        this.season = season;
-        this.period = period;
-        this.postseason = postseason;
+    public long getIdEquipoLocal() {
+        return idEquipoLocal;
     }
 
-    public long getId() {
-        return id;
+    public void setIdEquipoLocal(Integer idEquipoLocal) {
+        this.idEquipoLocal = idEquipoLocal;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getIdEquipoVisitante() {
+        return idEquipoVisitante;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public void setIdEquipoVisitante(Integer idEquipoVisitante) {
+        this.idEquipoVisitante = idEquipoVisitante;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public long getIdPartido() {
+        return idPartido;
     }
 
-    public Equipo getHome_team() {
-        return home_team;
+    public void setIdPartido(long idPartido) {
+        this.idPartido = idPartido;
     }
 
-    public void setHome_team(Equipo home_team) {
-        this.home_team = home_team;
+    public int getPeriodo() {
+        return periodo;
     }
 
-    public Equipo getVisitor_team() {
-        return visitor_team;
+    public void setPeriodo(int periodo) {
+        this.periodo = periodo;
     }
 
-    public void setVisitor_team(Equipo visitor_team) {
-        this.visitor_team = visitor_team;
+    public String getPostemporada() {
+        return postemporada;
     }
 
-    public int getHome_team_score() {
-        return home_team_score;
+    public void setPostemporada(String postemporada) {
+        this.postemporada = postemporada;
     }
 
-    public void setHome_team_score(int home_team_score) {
-        this.home_team_score = home_team_score;
+    public int getPuntosLocal() {
+        return puntosLocal;
     }
 
-    public int getVisitor_team_score() {
-        return visitor_team_score;
+    public void setPuntosLocal(int puntosLocal) {
+        this.puntosLocal = puntosLocal;
     }
 
-    public void setVisitor_team_score(int visitor_team_score) {
-        this.visitor_team_score = visitor_team_score;
+    public int getPuntosVisitante() {
+        return puntosVisitante;
     }
 
-    public String getStatus() {
-        return status;
+    public void setPuntosVisitante(int puntosVisitante) {
+        this.puntosVisitante = puntosVisitante;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public int getTemporada() {
+        return temporada;
     }
 
-    public String getTime() {
-        return time;
+    public void setTemporada(int temporada) {
+        this.temporada = temporada;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public long getSeason() {
-        return season;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
-    public void setSeason(long season) {
-        this.season = season;
+    public String getEstado() {
+        return estado;
     }
 
-    public String getPeriod() {
-        return period;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public void setPeriod(String period) {
-        this.period = period;
+    public String getTiempo() {
+        return tiempo;
     }
 
-    public String getPostseason() {
-        return postseason;
-    }
-
-    public void setPostseason(String postseason) {
-        this.postseason = postseason;
+    public void setTiempo(String tiempo) {
+        this.tiempo = tiempo;
     }
 }
