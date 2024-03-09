@@ -53,9 +53,9 @@ public class PartidoDao implements Dao<Partido> {
         return null;
     }
 
-    public List<Partido> getByEquipo(long idEquipo) {
+    public List<Partido> findByIdEquipo(long idEquipo) {
         em.getTransaction().begin();
-        List<Partido> partidos = em.createQuery("SELECT p FROM Partido p WHERE p.idEquipoLocal = :idEquipo OR p.idEquipoVisitante = :idEquipo", Partido.class)
+        List<Partido> partidos = em.createQuery("SELECT p FROM Partido p WHERE p.idEquipoLocal = :idEquipo OR p.idEquipoVisitante = :idEquipo order by p.fecha desc ", Partido.class)
                 .setParameter("idEquipo", idEquipo)
                 .getResultList();
         em.getTransaction().commit();

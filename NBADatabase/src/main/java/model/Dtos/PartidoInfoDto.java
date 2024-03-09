@@ -12,7 +12,26 @@ public class PartidoInfoDto {
     private String fecha;
 
 
-    public PartidoInfoDto() {
+
+
+    public PartidoInfoDto(int idPartido, String equipoLocal, String equipoVisitante, String periodo, String postemporada, int puntosLocal, int puntosVisitante, int temporada, String fecha) {
+        this.idPartido = idPartido;
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.periodo = periodo;
+        this.postemporada = postemporada;
+        this.puntosLocal = puntosLocal;
+        this.puntosVisitante = puntosVisitante;
+        this.temporada = temporada;
+        this.fecha = fecha;
+    }
+
+    public int getIdPartido() {
+        return idPartido;
+    }
+
+    public void setIdPartido(int idPartido) {
+        this.idPartido = idPartido;
     }
 
     public String getEquipoLocal() {

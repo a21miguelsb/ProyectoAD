@@ -70,7 +70,13 @@ public class EquipoDao implements Dao<Equipo> {
     public List<Equipo> getAll() {
         List<Equipo> equipos = new ArrayList<>();
         em.getTransaction().begin();
-        equipos = em.createQuery("SELECT e FROM Equipo e").getResultList();
+        List<Equipo>resultList = em.createQuery("SELECT e FROM Equipo e").getResultList();
+        for (Equipo e : resultList) {
+            if (!equipos.contains(e)) {
+                equipos.add(e);
+
+            }
+        }
         em.getTransaction().commit();
         return equipos;
     }
@@ -79,6 +85,7 @@ public class EquipoDao implements Dao<Equipo> {
         em.getTransaction().begin();
         Equipo equipo = (Equipo) em.createQuery("SELECT e FROM Equipo e WHERE e.nombreCompleto = :nombreEquipo").setParameter("nombreEquipo", nombreEquipo).getSingleResult();
         em.getTransaction().commit();
+
         return equipo;
     }
 }

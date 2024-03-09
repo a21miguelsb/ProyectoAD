@@ -13,14 +13,14 @@ public class PanelBusquedaJugador extends JPanel {
     private JButton botonBusqueda;
     PanelDetallesJugador panelInfoJugador;
     public PanelBusquedaJugador() {
-        setLayout(new FlowLayout());
+        setLayout(new BorderLayout());
         panelBusqueda = new JPanel();
         buscadorNombre = new JTextField(20);
         botonBusqueda = new JButton("Buscar");
 
         panelBusqueda.add(buscadorNombre);
         panelBusqueda.add(botonBusqueda);
-        add(panelBusqueda);
+        add(panelBusqueda, BorderLayout.NORTH);
 
 
         botonBusqueda.addActionListener(e -> {
@@ -32,10 +32,8 @@ public class PanelBusquedaJugador extends JPanel {
                 remove(panelInfoJugador);
             }
             panelInfoJugador = new PanelDetallesJugador(jugadorDto);
-
-
-            System.out.println(jugadorDto.getNombreCompleto());
-            add(panelInfoJugador);
+            panelInfoJugador.setBounds(20, 20, 400, 400);
+            add(panelInfoJugador, BorderLayout.CENTER);
             panelInfoJugador.setVisible(true);
             revalidate();
 

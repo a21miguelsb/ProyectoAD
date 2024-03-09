@@ -9,10 +9,10 @@ import java.time.LocalDate;
 public class Partido implements Serializable {
     @Id
     private long idPartido;
-    @ManyToOne
-    private Integer idEquipoLocal;
-    @ManyToOne
-    private Integer idEquipoVisitante;
+
+    private int idEquipoLocal;
+
+    private int idEquipoVisitante;
 
     private int periodo;
     private String postemporada;
@@ -23,6 +23,9 @@ public class Partido implements Serializable {
     private LocalDate fecha;
     private String estado;
     private String tiempo;
+
+    public Partido() {
+    }
 
     public Partido(Integer idEquipoLocal, Integer idEquipoVisitante, long idPartido, int periodo, String postemporada, int puntosLocal, int puntosVisitante, int temporada, LocalDate fecha, String estado, String tiempo) {
         this.idEquipoLocal = idEquipoLocal;

@@ -9,6 +9,8 @@ import model.Entities.Equipo;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class PanelListadoEquipos extends JPanel {
@@ -20,20 +22,22 @@ public class PanelListadoEquipos extends JPanel {
     public PanelListadoEquipos() {
         EquiposController equiposController = new EquiposController();
         setLayout(new BorderLayout());
-        botonInfoEquipo = new JButton("Más Info");
+
 
         List<Equipo> equipos = equiposController.buscarEquipos();
         tableModel = new EquipoTableModel(equipos);
         equipoTable = new JTable(tableModel);
 
-        // Agregar las columnas al modelo
+        tableModel.addColumn("ID");
         tableModel.addColumn("Nombre Completo");
         tableModel.addColumn("Ciudad");
         tableModel.addColumn("");
 
+
         equipoTable.setDefaultRenderer(JButton.class,new ButtonRenderer());
-        equipoTable.setDefaultEditor(JButton.class, new ButtonEditor());
-        // Crear un JScrollPane y agregar la tabla al JScrollPane
+        equipoTable.setDefaultEditor(JButton.class, new ButtonEditor(equipoTable));
+
+
         JScrollPane scrollPane = new JScrollPane(equipoTable);
 
         tableModel.setRowCount(0);
@@ -43,8 +47,10 @@ public class PanelListadoEquipos extends JPanel {
 
         for (Equipo equipo : equipos) {
             Object[] rowData = {
+                    equipo.getIdEquipo(),
                     equipo.getNombreCompleto(),
                     equipo.getCiudad(),
+                    ""
 
 
             };

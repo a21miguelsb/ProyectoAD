@@ -11,11 +11,12 @@ public class FramePrincipal extends JFrame {
 
 
         add(panelBotones);
-        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(600, 400));
         setResizable(false);
         setVisible(true);
+        setLocationRelativeTo(null);
+
         pack();
     }
 

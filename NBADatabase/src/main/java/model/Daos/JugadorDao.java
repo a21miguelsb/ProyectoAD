@@ -66,16 +66,28 @@ public class JugadorDao implements Dao<Jugador> {
 
     public Jugador getByNombre(String nombre) {
         em.getTransaction().begin();
-        Jugador jugador = em.createQuery("SELECT j FROM Jugador j WHERE j.nombre = :nombre", Jugador.class).setParameter("nombre", nombre).getSingleResult();
-        em.getTransaction().commit();
-        return jugador;
+        try {
+            Jugador jugador = em.createQuery("SELECT j FROM Jugador j WHERE j.nombre = :nombre", Jugador.class).setParameter("nombre", nombre).getSingleResult();
+            em.getTransaction().commit();
+            return jugador;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            return null;
+
+        }
     }
 
     public Jugador getByNombreCompleto(String nombre, String apellido) {
         em.getTransaction().begin();
-        Jugador jugador = em.createQuery("SELECT j FROM Jugador j WHERE j.nombre = :nombre AND j.apellido = :apellidos", Jugador.class).setParameter("nombre", nombre).setParameter("apellidos", apellido).getSingleResult();
-        em.getTransaction().commit();
-        return jugador;
+        try {
+            Jugador jugador = em.createQuery("SELECT j FROM Jugador j WHERE j.nombre = :nombre AND j.apellido = :apellidos", Jugador.class).setParameter("nombre", nombre).setParameter("apellidos", apellido).getSingleResult();
+            em.getTransaction().commit();
+            return jugador;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            return null;
+        }
+
     }
 }
 

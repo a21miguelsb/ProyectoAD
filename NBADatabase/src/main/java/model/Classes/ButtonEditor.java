@@ -1,7 +1,6 @@
 package model.Classes;
 
-import model.Entities.Equipo;
-import view.FrameEquipo;
+import view.DialogEquipo;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
@@ -9,38 +8,39 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonEditor extends AbstractCellEditor implements
-        TableCellEditor {
-    private JButton botonInfo;
-    private FrameEquipo frameEquipo;
+public class ButtonEditor extends AbstractCellEditor implements TableCellEditor {
+    private JButton button;
+    private JTable table;
+    private DialogEquipo frameEquipo;
+    public ButtonEditor(JTable table) {
+        this.table = table;
+        button = new JButton("Haz clic aquí");
 
-    public ButtonEditor() {
-// inicializar o JComboBox cos valores da clase EmploymentCategory
-        botonInfo = new JButton("Más Info");
-
+        // Agrega un ActionListener al botón para manejar el clic
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedRow = table.getValueAt(table.getSelectedRow(), 0).toString();
+                if (frameEquipo != null) {
+                    frameEquipo.dispose();
+                }
+                frameEquipo = new DialogEquipo(Integer.parseInt(selectedRow));
+                // Notifica al editor que se ha finalizado la edición
+                fireEditingStopped();
+            }
+        });
     }
+
     @Override
     public Object getCellEditorValue() {
-        return botonInfo;
+        // Este método no se usa realmente, puedes devolver cualquier cosa aquí
+        return button.getText();
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value,
                                                  boolean isSelected, int row, int column) {
-// value é o valor actual da cela a ser renderizada
-
-        botonInfo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (frameEquipo != null) {
-                    frameEquipo.dispose();
-
-
-                }
-                frameEquipo = new FrameEquipo(table.getValueAt(row, 0).toString());
-
-            }
-        });
-        return botonInfo;
+        return button;
     }
+
 }

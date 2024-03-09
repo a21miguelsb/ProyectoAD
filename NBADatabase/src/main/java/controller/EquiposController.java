@@ -26,9 +26,9 @@ public class EquiposController {
         return equipoDao.getAll();
     }
 
-    public EquipoInfoDto buscarEquipoPorNombre(String nombreEquipo) {
-        Equipo equipo = equipoDao.getByName(nombreEquipo);
-        List<Partido> listaPartidos = partidoDao.getByEquipo(equipo.getIdEquipo());
+    public EquipoInfoDto getEquipobyId(long idEquipo) {
+        Equipo equipo = equipoDao.get(idEquipo);
+        List<Partido> listaPartidos = partidoDao.findByIdEquipo(idEquipo);
 
         EquipoInfoDto equipoInfoDto = new EquipoInfoDto(
 
