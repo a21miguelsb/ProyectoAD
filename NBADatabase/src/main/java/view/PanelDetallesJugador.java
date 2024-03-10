@@ -30,7 +30,8 @@ public class PanelDetallesJugador extends JPanel {
         panelDraftJugador = new PanelInfoDraft(new Draft(jugadorDto.getFechaDraft(), jugadorDto.getRondaDraft(), jugadorDto.getNumeroDraft()));
         botonAñadirImagen = new JButton("Añadir imagen");
         labelNotFoundImagen = new JLabel("Imagen no encontrada");
-
+        botonEditarImagen = new JButton("Editar imagen");
+        botonAñadirImagen = new JButton("Añadir imagen");
         if (jugadorDto.getImagen() != null) {
             InputStream inputStream = new ByteArrayInputStream(jugadorDto.getImagen());
             try {
@@ -43,10 +44,9 @@ public class PanelDetallesJugador extends JPanel {
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error al cargar la imagen");
             }
-            botonEditarImagen = new JButton("Editar imagen");
         }
         else {
-            botonAñadirImagen = new JButton("Añadir imagen");
+
 
         }
 
