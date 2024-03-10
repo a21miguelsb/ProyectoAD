@@ -1,6 +1,6 @@
 # Proyecto Acceso a Datos - NBA
 La aplicación del proyecto permite a los usuarios a hacer consultas sobre los jugadores de la NBA registrados en la base de datos,mostrando datos sobre ellos como posición
-en la que juegan, equipo al que pertenecen,altura , peso, etc. Además permite acceder a información sobre los equipos de la NBA, mostrando datos como la ciudad en la que se
+en la que juegan, equipo al que pertenecen,altura , peso, etc. Además permite añadir imagenes de cada uno de los jugadores a la basae de datos. La app también nos deja acceder a información sobre los equipos de la NBA, mostrando datos como la ciudad en la que se
 encuentran, el nombre del equipo, la conferencia a la que pertenecen, etc. También permite a los usuarios hacer consultas sobre los partidos de la NBA, mostrando contra quien jugaron,
 los puntos de cada equipo y la fecha.
 

@@ -12,7 +12,9 @@ public class JugadorDto {
     private String numeroDraft;
     private String procedencia;
 
-    public JugadorDto(String nombreCompleto, String nombreEquipo, String posicion, String altura, String peso, String numero, String fechaDraft, String rondaDraft, String numeroDraft, String procedencia) {
+    private byte[] imagen;
+
+    public JugadorDto(String nombreCompleto, String nombreEquipo, String posicion, String altura, String peso, String numero, String fechaDraft, String rondaDraft, String numeroDraft, String procedencia, byte[] imagen) {
         this.nombreCompleto = nombreCompleto;
         this.nombreEquipo = nombreEquipo;
         this.posicion = posicion;
@@ -23,6 +25,7 @@ public class JugadorDto {
         this.rondaDraft = rondaDraft;
         this.numeroDraft = numeroDraft;
         this.procedencia = procedencia;
+        this.imagen = imagen;
     }
 
     public String getNombreCompleto() {
@@ -103,5 +106,13 @@ public class JugadorDto {
 
     public void setNumeroDraft(String numeroDraft) {
         this.numeroDraft = numeroDraft;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 }
